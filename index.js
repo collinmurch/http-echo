@@ -6,6 +6,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.all('*', (req, res) => {
+  req.body.success = 1
+  
   res.json({
     service: process.env.SERVICE_NAME || undefined, // Keys with value `undefined` are omitted during JSON serialization
     path: req.path,
